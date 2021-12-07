@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Ubuntu-Regular";
+}
+
+.welcome-container {
+  background: #ad5389;
+  background: linear-gradient(60deg, #ad5389, #3c1053);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 270px;
+  gap: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+  border-style: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  min-height: 35px;
+  min-width: 200px;
+  max-width: 200px;
+  font-weight: 700;
+  padding-top: 25px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+input[type="submit"],
+input[type="button"] {
+  border-radius: 4px;
+  border-style: hidden;
+  outline: none;
+  min-height: 30px;
+  min-width: 200px;
+  max-width: 200px;
+  font-weight: 700;
+  font-size: medium;
+  background-color: rgb(60, 16, 83, 0.5);
+  transition: all 0.5s ease-in-out;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus {
+  cursor: pointer;
+  background-color: rgb(60, 16, 83, 0.7);
+}
+
+.incorrect {
+  font-weight: 600;
+  font-size: smaller;
+  color: transparent;
+  transition: all 0.7s ease-in-out;
+  user-select: none;
+}
+
+.uname,
+.pass,
+.re-pass {
+  font-weight: 700;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.35s ease-in-out;
+}
+
+input[type="text"]:focus + .uname,
+input[type="text"]:valid + .uname {
+  transform: translateY(6px) translateX(calc(40% - 100px)) scale(0.8);
+  color: #3c1053;
+}
+
+input[type="password"]:focus + .pass,
+input[type="password"]:valid + .pass {
+  transform: translateY(68px) translateX(calc(40% - 100px)) scale(0.8);
+  color: #3c1053;
+}
+
+input[type="password"]:nth-of-type(3):focus + .re-pass,
+input[type="password"]:nth-of-type(3):valid + .re-pass {
+  transform: translateY(130px) translateX(calc(40% - 100px)) scale(0.8);
+  color: #3c1053;
+}
+
+input[type="text"]:invalid:not(:focus) + .uname,
+.uname {
+  transform: translateY(26px) translateX(calc(50% - 100px));
+  color: rgba(0, 0, 0, 0.6);
+}
+
+input[type="text"]:invalid ~ .ux,
+input[type="text"]:valid ~ .uc {
+  opacity: 1;
+}
+
+input[type="text"]:valid ~ .u-icon {
+  opacity: 0;
+}
+
+input[type="password"]:invalid:not(:focus) + .pass,
+.pass {
+  transform: translateY(88px) translateX(calc(50% - 100px));
+  color: rgba(0, 0, 0, 0.6);
+}
+
+input[type="password"]:invalid ~ .sx,
+input[type="password"]:valid ~ .sc {
+  opacity: 1;
+}
+
+input[type="password"]:nth-of-type(3):invalid:not(:focus) + .re-pass,
+.re-pass {
+  transform: translateY(150px) translateX(calc(50% - 100px));
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.flip-container {
+  width: 300px;
+  height: 270px;
+  perspective: 1000px;
+}
+
+.flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 1s;
+}
+
+.front,
+.back {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255, 0.2);
+  position: absolute;
+  backface-visibility: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.arrow {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: color 0.4s;
+}
+
+.ux,
+.uc,
+.sx,
+.sc,
+.rx,
+.rc {
+  position: absolute;
+  transform: translateX(calc(50% + 100px)) translateY(26px);
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+.sx,
+.sc {
+  transform: translateX(calc(50% + 100px)) translateY(88px);
+}
+
+.rx,
+.rc {
+  transform: translateX(calc(50% + 100px)) translateY(150px);
+}
+
+.u-icon,
+.p-icon,
+.r-icon {
+  position: absolute;
+  transform: translateX(calc(50% + 110px)) translateY(4px);
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+.p-icon {
+  transform: translateX(calc(50% + 110px)) translateY(66px);
+}
+
+.r-icon {
+  transform: translateX(calc(50% + 110px)) translateY(130px);
+}
+
+.arrow:hover {
+  color: rgb(60, 16, 83, 0.7);
+}
+
+.popup {
+  position: absolute;
+  bottom: 10px;
+  font-size: small;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 7px;
+  border-radius: 20px;
+  transform: translateY(50px);
+  transition: all 1s;
+}
+
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: local("Ubuntu-Regular"), url(../../Utils/Fonts/Ubuntu-Regular.ttf);
+  font-display: block;
+}
