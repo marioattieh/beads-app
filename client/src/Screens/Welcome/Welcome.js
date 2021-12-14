@@ -2,7 +2,7 @@ import "./Welcome.css";
 import User from "../../User";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from "../../Utils/Icons/ArrowBackIcon";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import UsernameIcon from "../../Utils/Icons/UsernameIcon";
@@ -163,8 +163,8 @@ const Welcome = () => {
           </div>
           <div className="back">
             <form onSubmit={submitRegister} noValidate>
-              <div className="arrow">
-                <ArrowBackIcon onClick={() => setFlipped(false)} />
+              <div className="arrow" onClick={() => setFlipped(false)}>
+                <ArrowBackIcon />
               </div>
               <input
                 type="text"

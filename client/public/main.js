@@ -1,3 +1,4 @@
+const { sqlite3 } = require("sqlite3");
 const { app, BrowserWindow } = require("electron");
 require("@electron/remote/main").initialize();
 
@@ -14,3 +15,15 @@ function createWindow() {
 }
 
 app.on("ready", createWindow);
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});

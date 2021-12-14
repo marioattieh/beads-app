@@ -167,9 +167,13 @@ input[type="password"]:nth-of-type(3):invalid:not(:focus) + .re-pass,
   position: absolute;
   top: 5px;
   left: 5px;
-  color: rgba(255, 255, 255, 0.8);
+  transform: scale(0.6);
   cursor: pointer;
-  transition: color 0.4s;
+}
+
+.arrow:hover svg path {
+  fill: rgb(60, 16, 83, 0.7);
+  transition: fill 0.4s;
 }
 
 .ux,
@@ -209,10 +213,6 @@ input[type="password"]:nth-of-type(3):invalid:not(:focus) + .re-pass,
 
 .r-icon {
   transform: translateX(calc(50% + 110px)) translateY(130px);
-}
-
-.arrow:hover {
-  color: rgb(60, 16, 83, 0.7);
 }
 
 .popup {
